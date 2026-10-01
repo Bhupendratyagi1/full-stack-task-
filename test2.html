@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShopKart - Clothes & Shoes</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config={
+    theme:{
+        extend:{
+            colors:{
+                background:"#F8FAFC",
+                heading:"#111827",
+                body:"#6B7280",
+                primary:"#2563EB",
+                sale:"#DC2626",
+                bordercolor:"#E5E7EB",
+                rating:"#F59E0B",
+                success:"#10B981"
+            },
+            fontFamily:{
+                sans:["Inter","sans-serif"]
+            }
+        }
+    }
+}
+</script>
+
+<style>
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}
+</style>
+</head>
+
+<body class="bg-background text-body font-sans antialiased">
+
+<header class="bg-heading text-white sticky top-0 z-50 shadow-md">
+<div class="max-w-[1440px] mx-auto px-4 md:px-8 py-4 flex items-center justify-between gap-6">
+
+<div class="flex items-center gap-3">
+<button class="md:hidden text-xl">☰</button>
+
+<div class="text-[20px] font-bold flex items-center gap-2">
+<span class="text-primary">◆</span>
+SHOPKART.
+</div>
+</div>
+
+<div class="hidden md:block flex-1 max-w-2xl">
+<input
+type="text"
+placeholder="Search for products, brands and more..."
+class="w-full bg-white/10 border border-white/20 rounded-full px-6 py-2.5 text-sm text-white placeholder-gray-300 outline-none focus:border-primary">
+</div>
+
+<div class="flex items-center gap-5">
+<button class="hover:text-primary">♙ <span class="hidden lg:inline">Account</span></button>
+<button class="hover:text-primary">🛒 <span class="hidden lg:inline">Cart</span></button>
+</div>
+
+</div>
+</header>
+
+<main class="max-w-[1440px] mx-auto px-4 md:px-8 py-8">
+
+<div class="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+
+<div class="text-[13px] flex gap-2 items-center bg-white px-4 py-2 rounded-lg border border-bordercolor shadow-sm">
+<a href="#" class="hover:text-primary">Home</a>
+<span>/</span>
+<a href="#" class="hover:text-primary">Fashion</a>
+<span>/</span>
+<span class="text-primary font-semibold">Clothes & Shoes</span>
+</div>
+
+<button class="lg:hidden bg-white border border-bordercolor px-5 py-2.5 rounded-lg font-medium text-heading shadow-sm">
+☰ Filters
+</button>
+
+</div>
+
+<div class="flex flex-col lg:flex-row-reverse gap-[32px]">
+
+<aside class="hidden lg:block w-[240px] shrink-0 bg-white p-5 rounded-[12px] border border-bordercolor h-fit shadow-sm">
+
+<div class="flex items-center justify-between mb-6 pb-4 border-b border-bordercolor">
+<h2 class="text-[16px] font-semibold text-heading">Filter Products</h2>
+<button class="text-[13px] text-primary hover:underline">Clear All</button>
+</div>
+
+<div class="mb-6">
+
+<h3 class="text-xs font-semibold text-gray-500 mb-3 uppercase tracking-wider">
+Categories
+</h3>
+
+<div class="space-y-3">
+
+<label class="flex items-center justify-between cursor-pointer">
+<span class="flex items-center gap-3 text-heading">
+<input type="checkbox" checked class="w-4 h-4 text-primary">
+Clothes
+</span>
+<span class="text-xs bg-background px-2 py-1 rounded-full">86</span>
+</label>
+
+<label class="flex items-center justify-between cursor-pointer">
+<span class="flex items-center gap-3 text-heading">
+<input type="checkbox" class="w-4 h-4 text-primary">
+Shoes
+</span>
+<span class="text-xs bg-background px-2 py-1 rounded-full">64</span>
+</label>
+
+<label class="flex items-center justify-between cursor-pointer">
+<span class="flex items-center gap-3 text-heading">
+<input type="checkbox" class="w-4 h-4 text-primary">
+Accessories
+</span>
+<span class="text-xs bg-background px-2 py-1 rounded-full">38</span>
+</label>
+
+</div>
+</div>
+
+<div class="mb-6">
+
+<h3 class="text-xs font-semibold text-gray-500 mb-3 uppercase tracking-wider">
+Price Range
+</h3>
+
+<div class="space-y-3">
+
+<label class="flex items-center gap-3 text-heading">
+<input type="radio" name="price" class="w-4 h-4 text-primary">
+Under ₹1,000
+</label>
+
+<label class="flex items-center gap-3 text-heading">
+<input type="radio" name="price" checked class="w-4 h-4 text-primary">
+₹1,000 - ₹2,500
+</label>
+
+<label class="flex items-center gap-3 text-heading">
+<input type="radio" name="price" class="w-4 h-4 text-primary">
+Above ₹2,500
+</label>
+
+</div>
+</div>
+
+<div class="mb-6">
+
+<h3 class="text-xs font-semibold text-gray-500 mb-3 uppercase tracking-wider">
+Brands
+</h3>
+
+<div class="grid grid-cols-2 gap-2">
+
+<label class="flex items-center gap-2 text-xs bg-background border border-bordercolor px-2 py-2 rounded">
+<input type="checkbox"> Nike
+</label>
+
+<label class="flex items-center gap-2 text-xs bg-background border border-bordercolor px-2 py-2 rounded">
+<input type="checkbox" checked> Adidas
+</label>
+
+<label class="flex items-center gap-2 text-xs bg-background border border-bordercolor px-2 py-2 rounded">
+<input type="checkbox"> Puma
+</label>
+
+<label class="flex items-center gap-2 text-xs bg-background border border-bordercolor px-2 py-2 rounded">
+<input type="checkbox"> Levi's
+</label>
+
+</div>
+</div>
+
+<button class="w-full bg-heading hover:bg-black text-white py-2.5 rounded-lg font-medium">
+Apply Filters
+</button>
+
+</aside>
+
+<div class="flex-1">
+
+<div class="hidden lg:flex justify-between items-center mb-6 bg-white p-4 rounded-[12px] border border-bordercolor shadow-sm">
+
+<span class="text-sm font-medium text-heading">
+Showing <span class="text-primary font-bold">1-8</span> of 8 results
+</span>
+
+<div class="flex items-center gap-3 text-sm">
+
+<span>Sort by:</span>
+
+<select class="bg-background border border-bordercolor rounded-md px-3 py-1.5 font-medium text-heading outline-none">
+<option>Most Popular</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+<option>Newest Arrivals</option>
+</select>
+
+</div>
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[24px]">
+
+<div class="bg-white border border-bordercolor rounded-[12px] p-4 flex flex-col group hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 relative">
+
+<span class="absolute top-4 right-4 bg-sale text-white text-[11px] font-bold px-2.5 py-1 rounded-full z-10">
+SALE
+</span>
+
+<div class="h-[220px] mb-5 overflow-hidden bg-background rounded-lg">
+<img
+src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80"
+alt="Cotton T-Shirt"
+class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+</div>
+
+<span class="text-[13px]">Clothing</span>
+
+<h3 class="text-[16px] font-semibold text-heading mt-1 mb-2 group-hover:text-primary">
+Oversized Cotton T-Shirt
+</h3>
+
+<div class="text-rating mb-2">
+★★★★★ <span class="text-body">4.6</span>
+</div>
+
+<div class="flex items-end gap-2 mt-auto mb-4">
+<span class="text-xl font-bold text-heading">₹799</span>
+<span class="text-sm line-through">₹1,199</span>
+</div>
+
+<button class="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 rounded-lg font-semibold">
+Add to Cart
+</button>
+
+</div>
+
+<div class="bg-white border border-bordercolor rounded-[12px] p-4 flex flex-col group hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 relative">
+
+<span class="absolute top-4 right-4 bg-success text-white text-[11px] font-bold px-2.5 py-1 rounded-full z-10">
+NEW
+</span>
+
+<div class="h-[220px] mb-5 overflow-hidden bg-background rounded-lg">
+<img
+src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=800&q=80"
+alt="Denim Shirt"
+class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+</div>
+
+<span class="text-[13px]">Clothing</span>
+
+<h3 class="text-[16px] font-semibold text-heading mt-1 mb-2 group-hover:text-primary">
+Casual Denim Shirt
+</h3>
+
+<div class="text-rating mb-2">
+★★★★★ <span class="text-body">4.4</span>
+</div>
+
+<div class="flex items-end gap-2 mt-auto mb-4">
+<span class="text-xl font-bold text-heading">₹1,299</span>
+<span class="text-sm line-through">₹1,799</span>
+</div>
+
+<button class="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 rounded-lg font-semibold">
+Add to Cart
+</button>
+
+</div>
+
+<div class="bg-white border border-bordercolor rounded-[12px] p-4 flex flex-col group hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 relative">
+
+<span class="absolute top-4 right-4 bg-sale text-white text-[11px] font-bold px-2.5 py-1 rounded-full z-10">
+SALE
+</span>
+
+<div class="h-[220px] mb-5 overflow-hidden bg-background rounded-lg">
+<img
+src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=800&q=80"
+alt="Blue Jeans"
+class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+</div>
+
+<span class="text-[13px]">Clothing</span>
+
+<h3 class="text-[16px] font-semibold text-heading mt-1 mb-2 group-hover:text-primary">
+Slim Fit Blue Jeans
+</h3>
+
+<div class="text-rating mb-2">
+★★★★★ <span class="text-body">4.7</span>
+</div>
+
+<div class="flex items-end gap-2 mt-auto mb-4">
+<span class="text-xl font-bold text-heading">₹1,599</span>
+<span class="text-sm line-through">₹2,199</span>
+</div>
+
+<button class="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 rounded-lg font-semibold">
+Add to Cart
+</button>
+
+</div>
+
+<div class="bg-white border border-bordercolor rounded-[12px] p-4 flex flex-col group hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 relative">
+
+<span class="absolute top-4 right-4 bg-success text-white text-[11px] font-bold px-2.5 py-1 rounded-full z-10">
+NEW
+</span>
+
+<div class="h-[220px] mb-5 overflow-hidden bg-background rounded-lg">
+<img
+src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80"
+alt="Cotton Hoodie"
+class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+</div>
+
+<span class="text-[13px]">Clothing</span>
+
+<h3 class="text-[16px] font-semibold text-heading mt-1 mb-2 group-hover:text-primary">
+Premium Cotton Hoodie
+</h3>
+
+<div class="text-rating mb-2">
+★★★★★ <span class="text-body">4.8</span>
+</div>
+
+<div class="flex items-end gap-2 mt-auto mb-4">
+<span class="text-xl font-bold text-heading">₹1,899</span>
+<span class="text-sm line-through">₹2,499</span>
+</div>
+
+<button class="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 rounded-lg font-semibold">
+Add to Cart
+</button>
+
+</div>
+
+<div class="bg-white border border-bordercolor rounded-[12px] p-4 flex flex-col group hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 relative">
+
+<span class="absolute top-4 right-4 bg-sale text-white text-[11px] font-bold px-2.5 py-1 rounded-full z-10">
+SALE
+</span>
+
+<div class="h-[220px] mb-5 overflow-hidden bg-background rounded-lg">
+<img
+src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80"
+alt="Running Sneakers"
+class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+</div>
+
+<span class="text-[13px]">Shoes</span>
+
+<h3 class="text-[16px] font-semibold text-heading mt-1 mb-2 group-hover:text-primary">
+Sport Running Sneakers
+</h3>
+
+<div class="text-rating mb-2">
+★★★★★ <span class="text-body">4.8</span>
+</div>
+
+<div class="flex items-end gap-2 mt-auto mb-4">
+<span class="text-xl font-bold text-heading">₹2,499</span>
+<span class="text-sm line-through">₹3,499</span>
+</div>
+
+<button class="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 rounded-lg font-semibold">
+Add to Cart
+</button>
+
+</div>
+
+<div class="bg-white border border-bordercolor rounded-[12px] p-4 flex flex-col group hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 relative">
+
+<span class="absolute top-4 right-4 bg-success text-white text-[11px] font-bold px-2.5 py-1 rounded-full z-10">
+NEW
+</span>
+
+<div class="h-[220px] mb-5 overflow-hidden bg-background rounded-lg">
+<img
+src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=800&q=80"
+alt="White Sneakers"
+class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+</div>
+
+<span class="text-[13px]">Shoes</span>
+
+<h3 class="text-[16px] font-semibold text-heading mt-1 mb-2 group-hover:text-primary">
+Casual White Sneakers
+</h3>
+
+<div class="text-rating mb-2">
+★★★★★ <span class="text-body">4.5</span>
+</div>
+
+<div class="flex items-end gap-2 mt-auto mb-4">
+<span class="text-xl font-bold text-heading">₹2,199</span>
+<span class="text-sm line-through">₹2,999</span>
+</div>
+
+<button class="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 rounded-lg font-semibold">
+Add to Cart
+</button>
+
+</div>
+
+<div class="bg-white border border-bordercolor rounded-[12px] p-4 flex flex-col group hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 relative">
+
+<div class="h-[220px] mb-5 overflow-hidden bg-background rounded-lg">
+<img
+src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=80"
+alt="High Top Shoes"
+class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+</div>
+
+<span class="text-[13px]">Shoes</span>
+
+<h3 class="text-[16px] font-semibold text-heading mt-1 mb-2 group-hover:text-primary">
+Classic High-Top Shoes
+</h3>
+
+<div class="text-rating mb-2">
+★★★★★ <span class="text-body">4.3</span>
+</div>
+
+<div class="flex items-end gap-2 mt-auto mb-4">
+<span class="text-xl font-bold text-heading">₹2,799</span>
+<span class="text-sm line-through">₹3,299</span>
+</div>
+
+<button class="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 rounded-lg font-semibold">
+Add to Cart
+</button>
+
+</div>
+
+<div class="bg-white border border-bordercolor rounded-[12px] p-4 flex flex-col group hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 relative">
+
+<span class="absolute top-4 right-4 bg-sale text-white text-[11px] font-bold px-2.5 py-1 rounded-full z-10">
+SALE
+</span>
+
+<div class="h-[220px] mb-5 overflow-hidden bg-background rounded-lg">
+<img
+src="https://images.unsplash.com/photo-1449247709967-d4461a6a6103?auto=format&fit=crop&w=800&q=80"
+alt="Leather Formal Shoes"
+class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+</div>
+
+<span class="text-[13px]">Shoes</span>
+
+<h3 class="text-[16px] font-semibold text-heading mt-1 mb-2 group-hover:text-primary">
+Classic Leather Formal Shoes
+</h3>
+
+<div class="text-rating mb-2">
+★★★★★ <span class="text-body">4.6</span>
+</div>
+
+<div class="flex items-end gap-2 mt-auto mb-4">
+<span class="text-xl font-bold text-heading">₹2,999</span>
+<span class="text-sm line-through">₹3,999</span>
+</div>
+
+<button class="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white py-2 rounded-lg font-semibold">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+</div>
+</div>
+</main>
+
+</body>
+</html>
